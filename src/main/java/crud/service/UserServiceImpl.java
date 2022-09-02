@@ -13,10 +13,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-    @Transactional
     @Override
-    public void createTable() {
-        userDao.createTable();
+    public User getUserById(Long id) {
+        return userDao.getUserById(id);
     }
 
     @Transactional

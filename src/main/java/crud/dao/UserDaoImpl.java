@@ -15,17 +15,17 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void createTable() {
-        entityManager.createNativeQuery("create table IF NOT EXISTS spring_hiber.users\n" +
-                "(\n" +
-                "    id        bigint auto_increment,\n" +
-                "    firstName     varchar(50) null,\n" +
-                "    address varchar(50) null,\n" +
-                "    email     varchar(50) null,\n" +
-                "    constraint table_name_pk\n" +
-                "        primary key (id)\n" +
-                ");");
-    }
+    //public void createTable() {
+      //  entityManager.createNativeQuery("create table IF NOT EXISTS spring_hiber.users\n" +
+       //         "(\n" +
+       //         "    id        bigint auto_increment,\n" +
+       //         "    firstName     varchar(50) null,\n" +
+       //         "    address varchar(50) null,\n" +
+       //         "    email     varchar(50) null,\n" +
+       //         "    constraint table_name_pk\n" +
+        //        "        primary key (id)\n" +
+        //        ");");
+   // }
 
     @Override
     public List<User> getAllUsers() {
@@ -38,7 +38,10 @@ public class UserDaoImpl implements UserDao {
         entityManager.persist(user);
         entityManager.flush();
     }
-
+    @Override
+    public User getUserById(Long id) {
+        return entityManager.find(User.class,id);
+    }
     @Override
     public User readUser(long id) {
         return entityManager.find(User.class, id);

@@ -5,7 +5,7 @@ import crud.model.User;
 import java.util.List;
 
 public interface UserService {
-    public void createTable();
+    User getUserById(Long id);
 
     List<User> getAllUsers();
 
